@@ -43,6 +43,7 @@ namespace Lite
         /// </summary>
         private readonly string name;
         private string nameOwner;
+        public GameController game;
 
         #endregion
 
@@ -58,6 +59,7 @@ namespace Lite
             : this(name, new PoolFiber())
         {
             this.ExecutionFiber.Start();
+            
         }
 
         /// <summary>
@@ -75,6 +77,7 @@ namespace Lite
             this.ExecutionFiber = executionFiber;
             this.Actors = new ActorCollection();
             this.Properties = new PropertyBag<object>();
+            this.game = new GameController();
         }
 
         /// <summary>

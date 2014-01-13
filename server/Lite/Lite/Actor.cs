@@ -23,6 +23,7 @@ namespace Lite
     public class Actor
     {
         private readonly List<ActorGroup> groups = new List<ActorGroup>();
+        public PlayerDetails playerDetails;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Actor"/> class.
@@ -42,6 +43,7 @@ namespace Lite
             : this()
         {
             this.Peer = peer;
+            playerDetails = new PlayerDetails();
         }
 
         /// <summary>
