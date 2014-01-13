@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ArkanaServer.Tests
+namespace WarkanaServer.Tests
 {
     using System;
     using System.Collections;
@@ -16,7 +16,7 @@ namespace ArkanaServer.Tests
     using Lite.Operations;
     using Lite.Tests.Client;
 
-    using ArkanaServer.Operations;
+    using WarkanaServer.Operations;
 
     using NUnit.Framework;
 

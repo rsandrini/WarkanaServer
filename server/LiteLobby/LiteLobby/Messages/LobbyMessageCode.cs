@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ArkanaServer.Messages
+namespace WarkanaServer.Messages
 {
     /// <summary>
     /// Defines message codes for <see cref="LiteLobbyRoom"/> rooms.

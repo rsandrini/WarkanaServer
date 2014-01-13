@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ArkanaServer
+namespace WarkanaServer
 {
     #region using directives
 
@@ -16,8 +16,8 @@ namespace ArkanaServer
     using Lite.Messages;
     using Lite.Operations;
 
-    using ArkanaServer.Caching;
-    using ArkanaServer.Messages;
+    using WarkanaServer.Caching;
+    using WarkanaServer.Messages;
 
     using Photon.SocketServer;
 

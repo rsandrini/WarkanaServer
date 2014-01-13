@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ArkanaServer
+namespace WarkanaServer
 {
     #region using directives
 
@@ -19,12 +19,12 @@ namespace ArkanaServer
     using Lite.Messages;
     using Lite.Operations;
 
-    using ArkanaServer.Messages;
-    using ArkanaServer.Operations;
+    using WarkanaServer.Messages;
+    using WarkanaServer.Operations;
 
     using Photon.SocketServer;
 
-    using JoinRequest = ArkanaServer.Operations.JoinRequest;
+    using JoinRequest = WarkanaServer.Operations.JoinRequest;
 
     #endregion
 

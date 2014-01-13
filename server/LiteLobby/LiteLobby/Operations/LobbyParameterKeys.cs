@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ArkanaServer.Operations
+namespace WarkanaServer.Operations
 {
     /// <summary>
     ///   The lobby parameter keys.

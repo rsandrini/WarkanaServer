@@ -8,8 +8,8 @@
     <ProjectGuid>{FA7E92F0-41E3-4295-9CB1-1B9A2F0605B5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ArkanaServer</RootNamespace>
-    <AssemblyName>ArkanaServer</AssemblyName>
+    <RootNamespace>WarkanaServer</RootNamespace>
+    <AssemblyName>WarkanaServer</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
@@ -54,7 +54,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\ArkanaServer.xml</DocumentationFile>
+    <DocumentationFile>bin\WarkanaServer.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ExitGames.Logging.Log4Net, Version=0.9.6.0, Culture=neutral, PublicKeyToken=eac0edd9746a4aa0, processorArchitecture=MSIL">

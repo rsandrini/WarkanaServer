@@ -42,6 +42,7 @@ namespace Lite
         ///   The room name.
         /// </summary>
         private readonly string name;
+        private string nameOwner;
 
         #endregion
 
@@ -195,6 +196,16 @@ namespace Lite
         public IDisposable ScheduleMessage(IMessage message, long timeMs)
         {
             return this.ExecutionFiber.Schedule(() => this.ProcessMessage(message), timeMs);
+        }
+
+        public void SetOwnerName(string ownerName)
+        {
+            this.nameOwner = ownerName;
+        }
+
+        public string GetOwnerName()
+        {
+            return this.nameOwner;
         }
 
         #endregion

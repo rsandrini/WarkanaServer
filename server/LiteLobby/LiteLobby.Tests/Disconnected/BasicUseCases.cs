@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ArkanaServer.Tests.Disconnected
+namespace WarkanaServer.Tests.Disconnected
 {
     using System.Collections;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace ArkanaServer.Tests.Disconnected
     using Lite.Operations;
     using Lite.Tests.Disconnected;
 
-    using ArkanaServer.Operations;
+    using WarkanaServer.Operations;
 
     using NUnit.Framework;
 

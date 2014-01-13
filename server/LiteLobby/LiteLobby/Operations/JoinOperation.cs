@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ArkanaServer.Operations
+namespace WarkanaServer.Operations
 {
     using Photon.SocketServer;
     using Photon.SocketServer.Rpc;

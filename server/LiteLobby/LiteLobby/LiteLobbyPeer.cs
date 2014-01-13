@@ -7,13 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ArkanaServer
+namespace WarkanaServer
 {
     using Lite;
     using Lite.Caching;
 
-    using ArkanaServer.Caching;
-    using ArkanaServer.Operations;
+    using WarkanaServer.Caching;
+    using WarkanaServer.Operations;
 
     using Photon.SocketServer;
 
@@ -81,7 +81,7 @@ namespace ArkanaServer
         }
 
         /// <summary>
-        ///   Joins the peer to a <see cref = "ArkanaServer" />.
+        ///   Joins the peer to a <see cref = "WarkanaServer" />.
         ///   Called by <see cref = "HandleJoinOperation">HandleJoinOperation</see>.
         /// </summary>
         /// <param name = "joinRequest">

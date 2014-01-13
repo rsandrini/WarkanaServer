@@ -8,7 +8,7 @@
     <ProjectGuid>{04C0A2B2-28FC-46E2-BF5A-4B4537D282F4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ArkanaServer.Tests</RootNamespace>
+    <RootNamespace>WarkanaServer.Tests</RootNamespace>
     <AssemblyName>LiteLobby.Tests</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -88,9 +88,9 @@
       <Project>{E1F918F4-F581-4280-9D91-3CF77B24C290}</Project>
       <Name>Lite</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LiteLobby\ArkanaServer.csproj">
+    <ProjectReference Include="..\LiteLobby\WarkanaServer.csproj">
       <Project>{FA7E92F0-41E3-4295-9CB1-1B9A2F0605B5}</Project>
-      <Name>ArkanaServer</Name>
+      <Name>WarkanaServer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

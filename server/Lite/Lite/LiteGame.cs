@@ -254,6 +254,17 @@ namespace Lite
                             changeGroupsOperation.OnComplete();
                             break;
                         }
+                    case OperationCode.StartGame:
+
+                        peer.SendOperationResponse(
+                            new OperationResponse { 
+                                OperationCode = operationRequest.OperationCode,
+                                ReturnCode = 0,
+                                DebugMessage = "start",
+                                Parameters = new Dictionary<byte, object> { { 100, "start" } }
+                            },
+                            sendParameters);
+                        break;
                     default:
                         {
                             string message = string.Format("Unknown operation code {0}", (OperationCode)operationRequest.OperationCode);

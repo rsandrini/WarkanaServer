@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ArkanaServer {
+namespace WarkanaServer {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

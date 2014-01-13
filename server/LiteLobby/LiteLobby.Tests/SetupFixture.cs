@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ArkanaServer.Tests
+namespace WarkanaServer.Tests
 {
     using System.IO;
 

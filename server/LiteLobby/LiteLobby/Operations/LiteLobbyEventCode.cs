@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ArkanaServer.Operations
+namespace WarkanaServer.Operations
 {
     /// <summary>
     /// defines the event codes used by the lite lobby application.

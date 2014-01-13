@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ArkanaServer.Caching
+namespace WarkanaServer.Caching
 {
     using Lite;
     using Lite.Caching;
