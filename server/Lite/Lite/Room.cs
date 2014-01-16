@@ -42,8 +42,6 @@ namespace Lite
         ///   The room name.
         /// </summary>
         private readonly string name;
-        private string nameOwner;
-        public GameController game;
 
         #endregion
 
@@ -77,7 +75,7 @@ namespace Lite
             this.ExecutionFiber = executionFiber;
             this.Actors = new ActorCollection();
             this.Properties = new PropertyBag<object>();
-            this.game = new GameController();
+            
         }
 
         /// <summary>
@@ -200,17 +198,6 @@ namespace Lite
         {
             return this.ExecutionFiber.Schedule(() => this.ProcessMessage(message), timeMs);
         }
-
-        public void SetOwnerName(string ownerName)
-        {
-            this.nameOwner = ownerName;
-        }
-
-        public string GetOwnerName()
-        {
-            return this.nameOwner;
-        }
-
         #endregion
 
         #region Implemented Interfaces

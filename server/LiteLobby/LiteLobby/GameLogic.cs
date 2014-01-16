@@ -2,21 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Lite.Operations;
 
-namespace Lite
+namespace WarkanaServer
 {
-    public enum statusGame
+    class GameLogic
     {
-        awaitingServer,
-        initialRound,
-        pause,
-        preRound,
-        playing,
-        resume
-    };
+        public enum status
+        {
+            awaitingServer,
+            initialRound,
+            pause,
+            preRound,
+            playing,
+            resume
+        };
 
-    class GameController
-    {
+       
         public int totalRoundNumber;
         public int currentRound;
         public int goldRound;
@@ -28,10 +30,10 @@ namespace Lite
         public int goldKill;
         public int initialGold;
         public float timeTotalToPause;
-        public statusGame statusGame = statusGame.awaitingServer;
+        public status statusGame = status.awaitingServer;
         public float currentTimer;
 
-        public GameController()
+        public GameLogic()
         {
             totalRoundNumber = 10;
             currentRound = 0;
@@ -46,8 +48,6 @@ namespace Lite
             timeTotalToPause = 25;
             currentTimer = 0;
         }
-
-
 
 
     }

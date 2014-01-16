@@ -18,6 +18,7 @@ namespace WarkanaServer
     using Photon.SocketServer;
 
     using PhotonHostRuntimeInterfaces;
+    //using Lite.Operations;
 
     /// <summary>
     ///   This <see cref = "LitePeer" /> subclass handles join operations with different operation implementation.
@@ -142,6 +143,56 @@ namespace WarkanaServer
             {
                 base.HandleJoinOperation(operationRequest, sendParameters);
             }
+        }
+
+        protected override void OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters)
+        {
+            /*
+            switch ((OperationCode)operationRequest.OperationCode)
+            {
+                case OperationCode.
+            }
+            base.OnOperationRequest(operationRequest, sendParameters);
+             * */
+
+            switch (operationRequest.OperationCode)
+            {
+                case 1:
+                {
+                    var operation = new MyCustomOperation(this.Protocol, operationRequest);
+                    if (operation.IsValid == false)
+                    {
+                        var response = new OperationResponse
+                        {
+                            OperationCode = operationRequest.OperationCode,
+                            ReturnCode = 1,
+                            DebugMessage = "That's garbage!"
+                        };
+                        this.SendOperationResponse(response, sendParameters);
+                        return;
+                    }
+
+                    if (operation.Message == "Hello World")
+                    {
+                        operation.Message = "Hello yourself!";
+                        OperationResponse response = new OperationResponse(operationRequest.OperationCode, operation);
+                        this.SendOperationResponse(response, sendParameters);
+                        return;
+                    }
+                    else
+                    {
+                        var response = new OperationResponse
+                        {
+                            OperationCode = operationRequest.OperationCode,
+                            ReturnCode = -1,
+                            DebugMessage = "Don't understand, what are you saying?"
+                        };
+                        this.SendOperationResponse(response, sendParameters);
+                        break;
+                    }
+                }
+            }
+            base.OnOperationRequest(operationRequest, sendParameters);
         }
 
         #endregion

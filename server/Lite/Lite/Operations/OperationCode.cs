@@ -49,15 +49,7 @@ namespace Lite.Operations
 
         ChangeGroups = 248,
 
-        /// <sumary>
-        ///     [Custom] - Set Owner Room
-        /// </sumary>
-        SetOwner = 240,
-
-        /// <sumary>
-        ///     [Custom] - StartGame In room
-        /// </sumary>
-        StartGame = 239,
+        
 
 
     }

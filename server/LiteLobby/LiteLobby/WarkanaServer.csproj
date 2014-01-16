@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Caching\LiteLobbyGameCache.cs" />
     <Compile Include="Caching\LiteLobbyRoomCache.cs" />
+    <Compile Include="GameLogic.cs" />
     <Compile Include="LiteLobbyApplication.cs" />
     <Compile Include="LiteLobbyPeer.cs" />
     <Compile Include="LiteLobbyRoom.cs" />
@@ -100,7 +101,10 @@
     <Compile Include="Operations\LiteLobbyEventCode.cs" />
     <Compile Include="Operations\LobbyParameterKeys.cs" />
     <Compile Include="Operations\JoinOperation.cs" />
+    <Compile Include="Operations\MyCustomOperation.cs" />
+    <Compile Include="PlayerDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TurnPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

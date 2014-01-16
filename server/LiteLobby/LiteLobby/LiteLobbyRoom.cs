@@ -299,5 +299,6 @@ namespace WarkanaServer
             var message = new RoomMessage((byte)LobbyMessageCode.PublishChangeList);
             this.schedule = this.ScheduleMessage(message, LobbySettings.Default.LobbyUpdateIntervalMs);
         }
+
     }
 }

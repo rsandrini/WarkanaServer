@@ -287,59 +287,7 @@ namespace Lite
                 case OperationCode.ChangeGroups:
                     this.HandleGameOperation(operationRequest, sendParameters);
                     return;
-                case OperationCode.StartGame:
-                    var message2 = (string)operationRequest.Parameters[100];
-                    if (message2 == "StartGame")
-                    {
-                        /*
-                        var response = new OperationResponse
-                        {
-                            OperationCode = operationRequest.OperationCode,
-                            ReturnCode = 0,
-                            DebugMessage = "ok",
-                            Parameters = new Dictionary<byte, object> { { 100, "start" } }
-                        };
-
-                        log.Debug("Start game operation ");
-                        */
-                        //this.SendOperationResponse(response, sendParameters);
-                        //dthis.HandleGameOperation(
-
-                        this.RoomReference.Room.EnqueueOperation(this, operationRequest, sendParameters);
-                    }
-                    return;
-                case OperationCode.SetOwner:
-                    var newOwner = (string)operationRequest.Parameters[100];
-                    if (newOwner == "getName")
-                    {
-                        var responseSetOwner = new OperationResponse
-                        {
-                            OperationCode = operationRequest.OperationCode,
-                            ReturnCode = 0,
-                            DebugMessage = this.RoomReference.Room.GetOwnerName(),
-                            Parameters = new Dictionary<byte, object> { { 100,  this.RoomReference.Room.GetOwnerName() } }
-                        };
-
-                        log.Debug("Sending Owner of Room");
-
-                        this.SendOperationResponse(responseSetOwner, sendParameters);
-                    }
-                    else
-                    {
-                        this.RoomReference.Room.SetOwnerName(newOwner);
-                        var responseSetOwner = new OperationResponse
-                        {
-                            OperationCode = operationRequest.OperationCode,
-                            ReturnCode = 0,
-                            DebugMessage = "ok",
-                            Parameters = new Dictionary<byte, object> { { 100, "Owner added" } }
-                        };
-
-                        log.Debug("Room name added");
-
-                        this.SendOperationResponse(responseSetOwner, sendParameters);
-                    }
-                    return;
+                
 
             }
 
