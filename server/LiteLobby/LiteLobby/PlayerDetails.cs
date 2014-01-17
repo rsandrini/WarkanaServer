@@ -1,28 +1,129 @@
-﻿using System;
+﻿using Lite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace WarkanaServer
 {
+    public enum StatusPlayerInGame
+    {
+        live,
+        dead,
+        waitRoundStart,
+    }
+
+
     class PlayerDetails
     {
-
-        //public PlayerScript player;
+        // Temp Data
         public float damageCaused;
         public float damageReceived;
         public int kills;
         public float timeDead; // Temp var
         public string deathBy;
 
-        public PlayerDetails()
+        public string name;
+        public int level;
+        public int xp;
+        public float lifeMax;
+        public float life;
+        public float regLife;
+        public float mana;
+        public float manaMax;
+        public float regMana;
+        public int gold;
+        public bool isReady;
+        public bool outTerrain;
+
+        public Actor actor;
+        public StatusPlayerInGame statusPlayerInGame;
+
+
+        public PlayerDetails(Actor actor)
         {
-            //this.player = player;
-            this.damageCaused = 0;
-            this.damageReceived = 0;
-            this.kills = 0;
-            this.timeDead = 0;
-            this.deathBy = string.Empty;
+            level = 1;
+            xp = 0;
+
+            life = ConfigGame.lifeMax;
+            lifeMax = ConfigGame.lifeMax;
+
+            mana = ConfigGame.manaMax;
+            manaMax = ConfigGame.manaMax;
+
+            regLife = ConfigGame.regLife;
+            regMana = ConfigGame.regMana;
+
+            gold = ConfigGame.initialGold;
+
+            isReady = false;
+            resetStatistics();
+        }
+
+        public void resetStatistics()
+        {
+            damageCaused = 0;
+            damageReceived = 0;
+            kills = 0;
+            timeDead = 0;
+            deathBy = String.Empty;
+            statusPlayerInGame = StatusPlayerInGame.waitRoundStart;
+            outTerrain = false;
+        }
+
+        void adjustMaxValues()
+        {
+            if (life > lifeMax)
+                life = lifeMax;
+
+            if (mana > manaMax)
+                mana = manaMax;
+        }
+
+        public void ReceiveDamage(float value)
+        {
+            damageReceived += value;
+            if (life > 0)
+                life -= value;
+
+            if (life < 0)
+            {
+                life = 0;
+                statusPlayerInGame = StatusPlayerInGame.dead;
+            }
+        }
+
+        public void addKill()
+        {
+            kills++;
+            gold += ConfigGame.goldKill;
+        }
+
+        public void addFirstBlood()
+        {
+            gold += ConfigGame.goldFirstBlood;
+        }
+
+        public void addExtraKill(string typeKill)
+        {
+            if (typeKill.Equals("double"))
+                gold += ConfigGame.goldDoubleKill;
+            if (typeKill.Equals("triple"))
+                gold += ConfigGame.goldTripleKill;
+        }
+
+        public void addExtraGold(string type)
+        {
+            if (type.Equals("nokill"))
+                gold += ConfigGame.goldNoKill;
+            if (type.Equals("round"))
+                gold += ConfigGame.goldRound;
+        }
+
+        public void setKiller(string _deathBy, float _timeDeath)
+        {
+            deathBy = _deathBy;
+            timeDead = _timeDeath;
         }
     }
 }

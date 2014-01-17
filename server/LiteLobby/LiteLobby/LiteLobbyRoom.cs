@@ -60,7 +60,7 @@ namespace WarkanaServer
         {
             this.roomList = new Hashtable();
             this.changedRoomList = new Hashtable();
-
+            GameLogic game = new GameLogic();
             // schedule sending the change list
             this.SchedulePublishChanges();
         }

@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="Caching\LiteLobbyGameCache.cs" />
     <Compile Include="Caching\LiteLobbyRoomCache.cs" />
+    <Compile Include="ConfigGame.cs" />
     <Compile Include="GameLogic.cs" />
     <Compile Include="LiteLobbyApplication.cs" />
     <Compile Include="LiteLobbyPeer.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="PlayerDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TurnPlayer.cs" />
+    <Compile Include="Vector3.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
