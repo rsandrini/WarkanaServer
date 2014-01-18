@@ -14,15 +14,15 @@ namespace WarkanaServer
         public static float regMana = 1;
 
         /* GameConfig  */
-        public static int totalRoundNumber;
-        public static int goldRound;
-        public static int goldFirstBlood;
-        public static int goldDoubleKill;
-        public static int goldTripleKill;
+        public static int totalRoundNumber = 10;
+        public static int goldRound = 5;
+        public static int goldFirstBlood = 3;
+        public static int goldDoubleKill = 3;
+        public static int goldTripleKill = 5;
         //public static int goldGameChanger;
-        public static int goldNoKill;
-        public static int goldKill;
-        public static int initialGold;
-        public static float timeTotalToPause;
+        public static int goldNoKill = 1;
+        public static int goldKill = 3;
+        public static int initialGold = 15;
+        public static float timeTotalToPause = 15;
     }
 }

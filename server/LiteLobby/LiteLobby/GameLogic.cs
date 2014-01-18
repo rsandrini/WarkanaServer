@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Lite.Operations;
+using ExitGames.Concurrency.Fibers;
+using Lite;
 
 namespace WarkanaServer
 {
-    class GameLogic
+    public class GameLogic
     {
+        /// <summary>
+        /// The schedule.
+        /// </summary>
+        private IDisposable schedule;
+
         public enum status
         {
             awaitingServer,
@@ -16,28 +23,54 @@ namespace WarkanaServer
             pause,
             preRound,
             playing,
+            endGame,
         };
 
-        public int totalRoundNumber;
         public int currentRound;
-        //public float currentTimer;
-        
+        public TimeSpan currentTimer;
         public status statusGame = status.awaitingServer;
         
         public List<PlayerDetails> listPlayers = new List<PlayerDetails>();
         public List<TurnPlayer> listPlayersTurn = new List<TurnPlayer>();
+        // Using to send for all players (temp cache)
         public List<TurnPlayer> listPlayersLastTurn = new List<TurnPlayer>();
 
+        /* This is MAP */
+        public List<Vector3> cubes = new List<Vector3>();
+        public List<int> cubeTimeout = new List<int>();
+
+        /* Looping fo update */
+        public PoolFiber ExecutionFiber { get; private set; }
+
         public GameLogic()
+            : this(new PoolFiber())
         {
-            totalRoundNumber = ConfigGame.totalRoundNumber;
+            this.ExecutionFiber.Start();
+
+        }
+
+        protected GameLogic(PoolFiber executionFiber)
+        {
+            this.ExecutionFiber = executionFiber;
             currentRound = 1;
+            this.ScheduleUpdate();
+            
+        }
+
+        public void addPlayer(Actor actor)
+        {
+            listPlayers.Add(new PlayerDetails(actor));
+        }
+
+        public void removePlayer(Actor actor)
+        {
+            PlayerDetails remove = listPlayers.Find(e => e.actor == actor);
+            listPlayers.Remove(remove);
         }
 
         public void loadingServerToStartGame(){
             createMap();
             statusGame = status.loading;
-
         }
 
         // The fucking method to update rounds and status game - Is call to event server
@@ -49,21 +82,44 @@ namespace WarkanaServer
                     break;
                 case status.loading:
                     if (allPlayersIsReady())
+                    {
                         statusGame = status.initialRound;
+                    }
                     break;
                 case status.initialRound:
-                    break;
-                case status.pause:
+                    // Wait timeout to buying
                     break;
                 case status.playing:
+                    if (getTotalPlayersLive() <= 1)
+                    {
+                        if (currentRound > ConfigGame.totalRoundNumber)
+                            statusGame = status.endGame;
+                        else
+                        {
+                            statusGame = status.preRound;
+                            processEndLevel();
+                        }
+                    }
+                    
                     break;
                 case status.preRound:
+                    
+                    // Timeout ... ConfigGame.timeTotalToPause;
+                    
+                    break;
+                case status.endGame:
+                    // Show resume battles
+                    break;
+                case status.pause:
                     break;
             }
         }
 
         void createMap()
         {
+            cubes.Clear();
+            cubeTimeout.Clear();
+
             float x=0;
             float y=-1f;
             float z=0;
@@ -75,9 +131,6 @@ namespace WarkanaServer
             int lineBlocksPerCicle = 2;
             int currentCicle = 1;
 
-            List<Vector3> cubes = new List<Vector3>();
-            List<int> cubeTimeout = new List<int>();
-            
             int rangeMin = total * 10;
             int rangeMax = rangeMin + 20;
 
@@ -188,7 +241,6 @@ namespace WarkanaServer
                 return false;
         }
 
-
         int getTotalKillIn2Secs(string playerName, float timePass)
         {
             int total=1;
@@ -260,5 +312,27 @@ namespace WarkanaServer
                 }
             }
         }
+
+        /// <summary>Schedules a broadcast of all changes.</summary>
+        private void SchedulePublishChanges()
+        {
+            this.schedule = this.ScheduleMethod((long)1000);
+        }
+
+        public IDisposable ScheduleMethod(long timeMs)
+        {
+            return this.ExecutionFiber.Schedule(() => this.update(), timeMs);
+        }
+ 
+        /// <summary>Sends the change list to all users in the lobby and then clears it.</summary>
+        private void ScheduleUpdate()
+        {
+            //schedule the next call!
+            this.SchedulePublishChanges();
+        }
+
+
+
+
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WarkanaServer
 {
-    class TurnPlayer
+    public class TurnPlayer
     {
         public string playerName;
         public float timeDead;

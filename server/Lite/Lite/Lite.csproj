@@ -55,19 +55,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ExitGames.Logging.Log4Net">
-      <HintPath>..\..\..\lib\ExitGames.Logging.Log4Net.dll</HintPath>
+      <HintPath>..\..\lib\ExitGames.Logging.Log4Net.dll</HintPath>
     </Reference>
     <Reference Include="ExitGamesLibs">
-      <HintPath>..\..\..\lib\ExitGamesLibs.dll</HintPath>
+      <HintPath>..\..\lib\ExitGamesLibs.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
-      <HintPath>..\..\..\lib\log4net.dll</HintPath>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Photon.SocketServer">
-      <HintPath>..\..\..\lib\Photon.SocketServer.dll</HintPath>
+      <HintPath>..\..\lib\Photon.SocketServer.dll</HintPath>
     </Reference>
     <Reference Include="PhotonHostRuntimeInterfaces">
-      <HintPath>..\..\..\lib\PhotonHostRuntimeInterfaces.dll</HintPath>
+      <HintPath>..\..\lib\PhotonHostRuntimeInterfaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

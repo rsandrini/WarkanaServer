@@ -42,6 +42,9 @@ namespace WarkanaServer
 
         // ReSharper disable UnaccessedField.Local
 
+        public GameLogic game;
+
+        
         /// <summary>
         /// The schedule.
         /// </summary>
@@ -60,7 +63,9 @@ namespace WarkanaServer
         {
             this.roomList = new Hashtable();
             this.changedRoomList = new Hashtable();
-            GameLogic game = new GameLogic();
+            
+            // Create a game Logic object
+            game = new GameLogic();
             // schedule sending the change list
             this.SchedulePublishChanges();
         }
@@ -89,6 +94,7 @@ namespace WarkanaServer
                     }
 
                     this.HandleJoinOperation(peer, joinOperation, sendParameters);
+                    
                     return;
             }
 
@@ -118,6 +124,8 @@ namespace WarkanaServer
                 this.PublishGameList(actor);
             }
 
+            // Real Add actor in Game Logic
+            game.addPlayer(actor);
             return actor;
         }
 
@@ -197,6 +205,8 @@ namespace WarkanaServer
         protected override int RemovePeerFromGame(LitePeer peer, LeaveRequest leaveRequest)
         {
             Actor actor = this.Actors.GetActorByPeer(peer);
+            // Remove player from playerList
+            game.removePlayer(actor);
 
             if (this.Actors.Remove(actor) == false)
             {

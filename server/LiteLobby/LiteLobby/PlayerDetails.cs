@@ -14,9 +14,9 @@ namespace WarkanaServer
     }
 
 
-    class PlayerDetails
+   public  class PlayerDetails
     {
-        // Temp Data
+        // Temp Data - This is replicated in TurnPlayer class
         public float damageCaused;
         public float damageReceived;
         public int kills;
@@ -39,6 +39,7 @@ namespace WarkanaServer
         public Actor actor;
         public StatusPlayerInGame statusPlayerInGame;
 
+        // Add class to control spell's
 
         public PlayerDetails(Actor actor)
         {
