@@ -25,6 +25,7 @@ namespace WarkanaServer
     using Photon.SocketServer;
 
     using JoinRequest = WarkanaServer.Operations.JoinRequest;
+    using System.Collections.Generic;
 
     #endregion
 
@@ -84,9 +85,9 @@ namespace WarkanaServer
         /// </param>
         protected override void ExecuteOperation(LitePeer peer, OperationRequest operationRequest, SendParameters sendParameters)
         {
-            switch ((OperationCode)operationRequest.OperationCode)
+            switch (operationRequest.OperationCode)
             {
-                case OperationCode.Join:
+                case (byte)OperationCode.Join:
                     var joinOperation = new JoinRequest(peer.Protocol, operationRequest);
                     if (peer.ValidateOperation(joinOperation, sendParameters) == false)
                     {
@@ -96,8 +97,12 @@ namespace WarkanaServer
                     this.HandleJoinOperation(peer, joinOperation, sendParameters);
                     
                     return;
+                case (byte)OperationCode.StartGame:
+                    game.loadingServerToStartGame();
+                    this.PublishGameData();
+                    return;
             }
-
+            //Log.Debug("OperationCode Registred " + operationRequest.OperationCode.ToString());
             base.ExecuteOperation(peer, operationRequest, sendParameters);
         }
 
@@ -309,6 +314,21 @@ namespace WarkanaServer
             var message = new RoomMessage((byte)LobbyMessageCode.PublishChangeList);
             this.schedule = this.ScheduleMessage(message, LobbySettings.Default.LobbyUpdateIntervalMs);
         }
+
+        private void PublishGameData()
+        {
+           /* var parameters  = new Dictionary<string, object>();
+            parameters.Add("qtdPlayers", Actors.Count);
+            Hashtable h = new Hashtable(parameters);
+            var customEvent = new CustomEvent(0, (byte)LiteLobbyEventCode.GetDataGame, h);
+            this.PublishEvent(customEvent, this.Actors, new SendParameters { Unreliable = true });*/
+
+
+
+
+        }
+
+
 
     }
 }

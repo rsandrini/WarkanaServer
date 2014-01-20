@@ -22,6 +22,8 @@ namespace WarkanaServer.Operations
         /// <summary>
         /// event code for the update game list event.
         /// </summary>
-        GameListUpdate = 251, 
+        GameListUpdate = 251,
+
+        GetDataGame = 2,
     }
 }

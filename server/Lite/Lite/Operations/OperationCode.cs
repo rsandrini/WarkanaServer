@@ -49,7 +49,7 @@ namespace Lite.Operations
 
         ChangeGroups = 248,
 
-        
+        StartGame = 1,
 
 
     }

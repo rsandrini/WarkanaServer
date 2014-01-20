@@ -254,7 +254,9 @@ namespace Lite
                             changeGroupsOperation.OnComplete();
                             break;
                         }
-                    
+                        /* CUSTOM */
+                    case OperationCode.StartGame:
+                        break;
                     default:
                         {
                             string message = string.Format("Unknown operation code {0}", (OperationCode)operationRequest.OperationCode);

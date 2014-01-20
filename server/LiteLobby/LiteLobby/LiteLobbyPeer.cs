@@ -79,6 +79,7 @@ namespace WarkanaServer
 
             // enqueue the operation request into the games execution queue
             gameReference.Room.EnqueueOperation(this, joinOperation.OperationRequest, sendParameters);
+
         }
 
         /// <summary>
@@ -147,14 +148,6 @@ namespace WarkanaServer
 
         protected override void OnOperationRequest(OperationRequest operationRequest, SendParameters sendParameters)
         {
-            /*
-            switch ((OperationCode)operationRequest.OperationCode)
-            {
-                case OperationCode.
-            }
-            base.OnOperationRequest(operationRequest, sendParameters);
-             * */
-
             switch (operationRequest.OperationCode)
             {
                 case 1:
@@ -172,13 +165,24 @@ namespace WarkanaServer
                         return;
                     }
 
-                    if (operation.Message == "Hello World")
+                    if (operation.Message == "StartGame")
                     {
-                        operation.Message = "Hello yourself!";
+                        RoomReference.Room.EnqueueOperation(this, operationRequest, sendParameters);
+
+                        operation.Message = "ok";
                         OperationResponse response = new OperationResponse(operationRequest.OperationCode, operation);
                         this.SendOperationResponse(response, sendParameters);
                         return;
                     }
+                   /* else if (operation.Message == "getData")
+                    {
+                        RoomReference.Room.EnqueueOperation(this, operationRequest, sendParameters);
+
+                        operation.Message = "received getData command";
+                        OperationResponse response = new OperationResponse(operationRequest.OperationCode, operation);
+                        this.SendOperationResponse(response, sendParameters);
+                        return;
+                    }*/
                     else
                     {
                         var response = new OperationResponse
